@@ -16,8 +16,8 @@ English | [简体中文](https://github.com/newObjectccc/vscode-extension-boiler
 
 ## Usage
 
-1. ```git clone git@github.com:newObjectccc/vscode-extension-boilerplate.git```
-2. ```pnpm install```
-3. ```pnpm watch```
+1. `git clone git@github.com:newObjectccc/vscode-extension-boilerplate.git`
+2. `pnpm install`
+3. `pnpm watch`
 
 happy hacking.
