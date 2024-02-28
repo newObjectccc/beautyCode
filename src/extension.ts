@@ -1,4 +1,8 @@
-import * as vscode from 'vscode';
-console.log(vscode);
+import * as vscode from '@vscode-use/utils';
 
-                 console.log(1111         );
+export function activate() {
+  vscode.registerCommand('extension.helloWorld', () => {
+    vscode.message.info('Hello, World!');
+    console.log('Hello, World!');
+  });
+}
