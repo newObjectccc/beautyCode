@@ -6,6 +6,12 @@
 
 [English](https://github.com/newObjectccc/vscode-extension-boilerplate/blob/main/README.md) | 简体中文
 
+## Environment
+
+我建议使用下面的开发环境:
+- node >= 20
+- pnpm >= 8
+
 ## Feature
 
 - ✨ 检查你的代码修改编译到out文件.
