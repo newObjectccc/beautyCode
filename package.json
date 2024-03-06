@@ -25,6 +25,18 @@
       {
         "command": "extension.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "extension.smartConsole",
+        "title": "smart log"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.smartConsole",
+        "key": "ctrl+f5",
+        "mac": "cmd+f5",
+        "when": "editorTextFocus"
       }
     ]
   },
