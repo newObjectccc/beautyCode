@@ -9,6 +9,7 @@ English | [简体中文](https://github.com/newObjectccc/vscode-extension-boiler
 ## Environment
 
 I recommend setup your development environment to this below:
+
 - node >= 20
 - pnpm >= 8
 
