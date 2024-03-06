@@ -9,6 +9,7 @@
 ## Environment
 
 我建议使用下面的开发环境:
+
 - node >= 20
 - pnpm >= 8
 
