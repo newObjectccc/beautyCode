@@ -29,7 +29,7 @@
     ],
     "keybindings": [
       {
-        "command": "extension.smartConsole",
+        "command": "extension.beautyCode",
         "key": "ctrl+f5",
         "mac": "cmd+f5",
         "when": "editorTextFocus"
