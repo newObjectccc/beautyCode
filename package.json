@@ -10,7 +10,7 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "prepare": "husky",
-    "changelog": "npx git-cliff@latest"
+    "changelog": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -62,6 +62,7 @@
     "eslint-plugin-prettier": "^5.1.3",
     "husky": "9.0.11",
     "prettier": "^3.2.5",
+    "standard-version": "^9.5.0",
     "typescript": "^5.3.3"
   }
 }
