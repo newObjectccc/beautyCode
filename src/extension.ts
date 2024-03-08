@@ -1,8 +1,27 @@
 import * as vscode from '@vscode-use/utils';
+import fs from 'node:fs';
+import path from 'node:path';
+import * as _vscode from 'vscode';
 
-export function activate() {
+export function activate(context: _vscode.ExtensionContext) {
   vscode.registerCommand('extension.beautyCode', () => {
     const selection = vscode.getSelection();
     console.log('selection', selection);
+    const panel = _vscode.window.createWebviewPanel(
+      'beautyCode',
+      'Beauty Code',
+      _vscode.ViewColumn.One,
+      {
+        enableScripts: true,
+        retainContextWhenHidden: true
+      }
+    );
+    panel.webview.html = fs.readFileSync(
+      path.join(context.extensionPath, 'src', 'webview.html'),
+      'utf8'
+    );
+    vscode.nextTick(() => {
+      panel.webview.postMessage({ eventName: 'loaded', value: selection });
+    });
   });
 }
