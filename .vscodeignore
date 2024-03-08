@@ -1,0 +1,5 @@
+.prettierrc.*
+.prettierignore
+.eslintrc.*
+.gitignore
+tsconfig.json
