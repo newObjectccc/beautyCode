@@ -6,37 +6,111 @@
     <style>
       body {
         display: flex;
-        flex-flow: row nowrap;
-        justify-content: center;
+        flex-flow: column nowrap;
         align-items: center;
+      }
+      #container {
+        padding: 50px;
+        background-color: #282c34;
       }
       #codeBlock {
         padding: 20px;
         border-radius: 20px;
         background-color: #282c34;
       }
+      #btnWrapper {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 60px;
+        gap: 12px;
+      }
     </style>
   </head>
   <body>
-    <div id="codeBlock">
-      <svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14">
-        <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
-          <circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle>
-          <circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle>
-          <circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle>
-        </g>
-      </svg>
+    <div id="container">
+      <div id="codeBlock">
+        <svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14">
+          <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+            <circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle>
+            <circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle>
+            <circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle>
+          </g>
+        </svg>
+        <div id="codeContainer"></div>
+      </div>
     </div>
-    <script>
-      window.addEventListener('message', function (event) {
-        console.log('🚀 ~ event:', event);
+    <div id="btnWrapper">
+      <label class="labelLanguage" for="language"></label>
+      <select name="language" id="language"></select>
+      <label class="labelTheme" for="theme"></label>
+      <select name="theme" id="theme"></select>
+    </div>
+    <button id="exportPic">Export PNG</button>
+    <script type="module">
+      import { codeToHtml, bundledLanguages, bundledThemes } from 'https://esm.sh/shiki@1.0.0';
+      import html2canvas from 'https://cdn.skypack.dev/html2canvas';
+      let cachedCode = '',
+        cachedLocale = void 0,
+        cachedLanguage = void 0;
+      const languageSelect = document.querySelector('#language');
+      const themeSelect = document.querySelector('#theme');
+      const codeContainer = document.querySelector('#codeContainer');
+      const codeWrapper = document.querySelector('#codeBlock');
+      const contaniner = document.querySelector('#container');
+      const exportPic = document.querySelector('#exportPic');
+
+      exportPic.addEventListener('click', () => {
+        const contaniner = document.querySelector('#container');
+        html2canvas(contaniner).then((canvas) => {
+          const img = canvas.toDataURL('image/png');
+          const a = document.createElement('a');
+          a.href = img;
+          a.download = 'code.png';
+          a.click();
+        });
+      });
+
+      languageSelect.innerHTML = Object.keys(bundledLanguages)
+        .map((lang) => `<option value="${lang}">${lang}</option>`)
+        .join('');
+      languageSelect.addEventListener('change', updateCodeBlock);
+
+      themeSelect.innerHTML = Object.keys(bundledThemes)
+        .map((theme) => `<option value="${theme}">${theme}</option>`)
+        .join('');
+      themeSelect.addEventListener('change', updateCodeBlock);
+
+      async function updateCodeBlock() {
+        if (!cachedCode) {
+          return (codeContainer.innerHTML = `<p>${cachedLocale === 'zh-cn' ? '没有代码' : 'No code to display'}</p>`);
+        }
+        const lang = languageSelect.value;
+        const theme = themeSelect.value;
+        const codeStr = await codeToHtml(cachedCode, { lang, theme });
+        codeContainer.innerHTML = codeStr;
+        const preBgColor = codeContainer.querySelector('pre').style.backgroundColor;
+        codeWrapper.style.backgroundColor = preBgColor;
+        codeWrapper.style.boxShadow = `4px 4px 5px 8px ${preBgColor}`;
+        contaniner.style.backgroundColor = preBgColor.replace('rgb', 'rgba').replace(')', ', 0.5)');
+      }
+
+      window.addEventListener('message', async function (event) {
         const message = event.data;
+        cachedCode = message.value.selectedTextArray.at(0);
+        cachedLanguage = message.value.language || 'javascript';
+        cachedLocale = message.value.locale || 'en';
+        document.querySelector('.labelLanguage').textContent =
+          cachedLocale === 'zh-cn' ? '语言:' : 'Language:';
+        document.querySelector('.labelTheme').textContent =
+          cachedLocale === 'zh-cn' ? '主题:' : 'Theme:';
+        exportPic.textContent = cachedLocale === 'zh-cn' ? '导出PNG图片' : 'Export PNG';
         if (message.eventName === 'loaded') {
-          const code = message.value.selectedTextArray[0];
-          const codeBlock = document.createElement('pre');
-          const codeBlockEle = document.querySelector('#codeBlock');
-          codeBlock.innerHTML = code;
-          codeBlockEle.appendChild(codeBlock);
+          themeSelect.value = 'vitesse-dark';
+          languageSelect.value = cachedLanguage;
+          await updateCodeBlock(cachedLanguage, 'vitesse-dark');
         }
       });
     </script>
