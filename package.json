@@ -30,7 +30,7 @@
   "engines": {
     "vscode": "^1.86.0"
   },
-  "icon": "images/icon.png",
+  "icon": "images/iconLg-48x48px.png",
   "activationEvents": [],
   "contributes": {
     "commands": [
