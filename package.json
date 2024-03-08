@@ -9,7 +9,8 @@
     "vsc:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "prepare": "husky"
+    "prepare": "husky",
+    "changelog": "npx git-cliff@latest"
   },
   "repository": {
     "type": "git",
