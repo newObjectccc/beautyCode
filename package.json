@@ -2,7 +2,7 @@
   "name": "beautycode",
   "version": "1.1.0",
   "description": "A VS Code extension that exports beautiful code block images based on the user's selected code.",
-  "publisher": "Vesper@之一",
+  "publisher": "Vesper",
   "main": "./out/extension.js",
   "scripts": {
     "vsc:publish": "npx @vscode/vsce publish",
