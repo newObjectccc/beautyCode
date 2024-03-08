@@ -6,7 +6,8 @@ import * as _vscode from 'vscode';
 export function activate(context: _vscode.ExtensionContext) {
   vscode.registerCommand('extension.beautyCode', () => {
     const selection = vscode.getSelection();
-    console.log('selection', selection);
+    const locale = vscode.getLocale();
+    const language = vscode.getActiveTextEditorLanguageId();
     const panel = _vscode.window.createWebviewPanel(
       'beautyCode',
       'Beauty Code',
@@ -21,7 +22,12 @@ export function activate(context: _vscode.ExtensionContext) {
       'utf8'
     );
     vscode.nextTick(() => {
-      panel.webview.postMessage({ eventName: 'loaded', value: selection });
+      panel.webview.postMessage({
+        eventName: 'loaded',
+        value: selection,
+        locale,
+        language
+      });
     });
   });
 }
