@@ -1,7 +1,7 @@
 {
-  "name": "vscode-extension-boilerplate",
+  "name": "beautycode",
   "version": "1.0.0",
-  "description": "",
+  "description": "A VS Code extension that exports beautiful code block images based on the user's selected code.",
   "publisher": "Vesper@之一",
   "main": "./out/extension.js",
   "scripts": {
@@ -11,7 +11,19 @@
     "watch": "tsc -watch -p ./",
     "prepare": "husky"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/newObjectccc/beautyCode.git"
+  },
+  "keywords": [
+    "beauty",
+    "codeblock",
+    "code",
+    "export",
+    "png",
+    "picture"
+  ],
+  "displayName": "Beauty CodeBlock Exporter",
   "categories": [
     "Other"
   ],
