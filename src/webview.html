@@ -84,6 +84,7 @@
       themeSelect.addEventListener('change', updateCodeBlock);
 
       async function updateCodeBlock() {
+        codeContainer.innerHTML = `<p>${cachedLocale === 'zh-cn' ? '加载中...' : 'Loading...'}</p>`;
         if (!cachedCode) {
           return (codeContainer.innerHTML = `<p>${cachedLocale === 'zh-cn' ? '没有代码' : 'No code to display'}</p>`);
         }
