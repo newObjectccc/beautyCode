@@ -5,8 +5,8 @@
   "publisher": "Vesper@之一",
   "main": "./out/extension.js",
   "scripts": {
-    "publish": "npx @vscode/vsce publish",
-    "vscode:prepublish": "npm run compile",
+    "vsc:publish": "npx @vscode/vsce publish",
+    "vsc:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "prepare": "husky"
