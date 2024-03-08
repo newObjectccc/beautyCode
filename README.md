@@ -9,13 +9,15 @@ English | [简体中文](https://github.com/newObjectccc/beautyCode/blob/main/RE
 ## Useage
 
 1. Select your code which you want export beauty codeblock.
+
 ![image](https://github.com/newObjectccc/beautyCode/assets/42132586/120fd1bd-ed60-4a93-886f-141cf7766d5e)
 
-2. Press "Ctrl + F5" to preview. in macOS, your can use "Command + F5".
+3. Press "Ctrl + F5" to preview. in macOS, your can use "Command + F5".
+
 ![image](https://github.com/newObjectccc/beautyCode/assets/42132586/c8ad5838-d047-44ad-9e24-19679e9d55d0)
 
-3. Customise your language and theme, BeautyCode will rerender the codeblock.
-4. Finally, your can press the Export button to get your codeblock picture.
+5. Customise your language and theme, BeautyCode will rerender the codeblock.
+6. Finally, your can press the Export button to get your codeblock picture.
 
 ## Feature
 
