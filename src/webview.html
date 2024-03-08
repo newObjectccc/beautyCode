@@ -1,0 +1,44 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beauty CodeBlock</title>
+    <style>
+      body {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+      }
+      #codeBlock {
+        padding: 20px;
+        border-radius: 20px;
+        background-color: #282c34;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="codeBlock">
+      <svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14">
+        <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+          <circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"></circle>
+          <circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"></circle>
+          <circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle>
+        </g>
+      </svg>
+    </div>
+    <script>
+      window.addEventListener('message', function (event) {
+        console.log('🚀 ~ event:', event);
+        const message = event.data;
+        if (message.eventName === 'loaded') {
+          const code = message.value.selectedTextArray[0];
+          const codeBlock = document.createElement('pre');
+          const codeBlockEle = document.querySelector('#codeBlock');
+          codeBlock.innerHTML = code;
+          codeBlockEle.appendChild(codeBlock);
+        }
+      });
+    </script>
+  </body>
+</html>
