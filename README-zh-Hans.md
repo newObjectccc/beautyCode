@@ -19,6 +19,8 @@ A VS Code extension that exports beautiful code block images based on the user's
 5. 自定义你的主题和语言, BeautyCode 会根据你的选择重渲染.
 6. 最后, 点击导出按钮获取你的代码块图片.
 
+![code](https://github.com/newObjectccc/beautyCode/assets/127731063/7b080648-febd-45d9-a4bd-a71010117df8)
+
 ## 功能
 
 - ✨ 得益于Shiki, 你可以定制你的漂亮代码块.
