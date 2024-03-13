@@ -2,6 +2,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://cdn.skypack.dev" />
+    <link rel="preconnect" href="https://esm.sh" />
     <title>Beauty CodeBlock</title>
     <style>
       body {
@@ -39,13 +41,13 @@
             <circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"></circle>
           </g>
         </svg>
-        <div id="codeContainer"></div>
+        <div id="codeContainer">loading...</div>
       </div>
     </div>
     <div id="btnWrapper">
-      <label class="labelLanguage" for="language"></label>
+      <label class="labelLanguage" for="language">Language:</label>
       <select name="language" id="language"></select>
-      <label class="labelTheme" for="theme"></label>
+      <label class="labelTheme" for="theme">Theme:</label>
       <select name="theme" id="theme"></select>
     </div>
     <button id="exportPic">Export PNG</button>
@@ -97,22 +99,28 @@
         contaniner.style.backgroundColor = preBgColor.replace('rgb', 'rgba').replace(')', ', 0.5)');
       }
 
-      window.addEventListener('message', async function (event) {
+      window.addEventListener('message', function (event) {
         const message = event.data;
-        cachedCode = message.value.selectedTextArray.at(0);
-        cachedLanguage = message.value.language || 'javascript';
-        cachedLocale = message.value.locale || 'en';
-        document.querySelector('.labelLanguage').textContent =
-          cachedLocale === 'zh-cn' ? '语言:' : 'Language:';
-        document.querySelector('.labelTheme').textContent =
-          cachedLocale === 'zh-cn' ? '主题:' : 'Theme:';
-        exportPic.textContent = cachedLocale === 'zh-cn' ? '导出PNG图片' : 'Export PNG';
-        if (message.eventName === 'loaded') {
+        if (message.eventName === 'render') {
+          cachedCode = message.value.selectedTextArray.at(0);
+          cachedLanguage = message.value.language || 'javascript';
+          cachedLocale = message.value.locale || 'en';
+          document.querySelector('.labelLanguage').textContent =
+            cachedLocale === 'zh-cn' ? '语言:' : 'Language:';
+          document.querySelector('.labelTheme').textContent =
+            cachedLocale === 'zh-cn' ? '主题:' : 'Theme:';
+          exportPic.textContent = cachedLocale === 'zh-cn' ? '导出PNG图片' : 'Export PNG';
+          codeContainer.innerHTML = `<p>${cachedLocale === 'zh-cn' ? '加载中...' : 'Loading...'}</p>`;
           themeSelect.value = 'vitesse-dark';
           languageSelect.value = cachedLanguage;
-          await updateCodeBlock(cachedLanguage, 'vitesse-dark');
+          updateCodeBlock(cachedLanguage, 'vitesse-dark');
         }
       });
+
+      window.onload = function () {
+        const vscode = acquireVsCodeApi();
+        vscode.postMessage({ eventName: 'loaded' });
+      };
     </script>
   </body>
 </html>

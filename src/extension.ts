@@ -21,13 +21,22 @@ export function activate(context: _vscode.ExtensionContext) {
       path.join(context.extensionPath, 'src', 'webview.html'),
       'utf8'
     );
-    vscode.nextTick(() => {
-      panel.webview.postMessage({
-        eventName: 'loaded',
-        value: selection,
-        locale,
-        language
-      });
-    });
+    // vscode.nextTick(() => {
+
+    panel.webview.onDidReceiveMessage(
+      (event: { eventName: string }) => {
+        if (event.eventName === 'loaded') {
+          panel.webview.postMessage({
+            eventName: 'render',
+            value: selection,
+            locale,
+            language
+          });
+        }
+      },
+      undefined,
+      context.subscriptions
+    );
+    // });
   });
 }
