@@ -5,8 +5,7 @@
   "publisher": "Vesper",
   "main": "./out/extension.js",
   "scripts": {
-    "vsc:package": "npx @vscode/vsce package",
-    "vsc:prepublish": "npm run compile",
+    "vsc:package": "npm run changelog && npx @vscode/vsce package",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "prepare": "husky",
