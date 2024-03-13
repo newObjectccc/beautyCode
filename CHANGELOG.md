@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/newObjectccc/beautyCode/compare/v1.1.0...v1.1.1) (2024-03-13)
+
+
+### Bug Fixes
+
+* add loading ([b98ebc4](https://github.com/newObjectccc/beautyCode/commit/b98ebc40a20a0797c988a34915c1e0bece8abf22))
+* no code if network is pending ([9d3f145](https://github.com/newObjectccc/beautyCode/commit/9d3f145675f685140d08c14ad0c18494d915fa00))
+* remove boxshadow ([e6444cb](https://github.com/newObjectccc/beautyCode/commit/e6444cbd9f337e1db0730eba957a623c38344323))
+
 ## 1.1.0 (2024-03-08)
 
 
