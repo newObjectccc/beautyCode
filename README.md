@@ -19,6 +19,8 @@ English | [简体中文](https://github.com/newObjectccc/beautyCode/blob/main/RE
 5. Customise your language and theme, BeautyCode will rerender the codeblock.
 6. Finally, your can press the Export button to get your codeblock picture.
 
+![code](https://github.com/velproqqq/beautyCode/assets/127731063/b5ea4f7e-9360-4896-8afd-1398635aa2c6)
+
 ## Feature
 
 - ✨ Thanks to Shiki, you can customise your beautiful codeblock.
@@ -26,5 +28,9 @@ English | [简体中文](https://github.com/newObjectccc/beautyCode/blob/main/RE
 - 💫 Export your codeblock just one click even no need to leave VSC.
 - 🧨 Supports many Programming Languages.
 - 💖 Supports Many Free Theme.
+
+## Inspiration
+
+[Carbon](https://carbon.now.sh/)
 
 hope enjoy!
