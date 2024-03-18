@@ -1,4 +1,6 @@
-# Beauty CodeBlock Exporter
+#Beauty CodeBlock Exporter
+
+![windows-62x62px](https://github.com/newObjectccc/beautyCode/assets/42132586/8ab272d2-e2b8-4c51-b541-ee3d1942478b)
 
 A VS Code extension that exports beautiful code block images based on the user's selected code.
 
