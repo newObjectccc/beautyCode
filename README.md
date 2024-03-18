@@ -1,4 +1,4 @@
-#Beauty CodeBlock Exporter
+# Beauty CodeBlock Exporter
 
 ![iPhone-180x180px](https://github.com/newObjectccc/beautyCode/assets/42132586/aefae2f6-f6b3-422c-ae7b-0cdaf2e9eb4a)
 
